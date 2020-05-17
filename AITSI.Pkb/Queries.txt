@@ -4,8 +4,9 @@ Uno, Dos, Tres
 PROCEDURE p1, p2;
 SELECT p1 such that Uses (p1, "tres") and MODIFIES (p1, "tres") and Calls (p1, p2)
 Uno, Dos
-Procedure p;
-Select p such that Calls ("Circle", p) and Modifies (p, "c") and Uses (p, "a")
+variable v, assign a;
+Select v such that Uses (a, v)
+a, b, c, d, k, t
 Rectangle, Triangle
 procedure p;
 Select p such that Calls (p, "Triangle")

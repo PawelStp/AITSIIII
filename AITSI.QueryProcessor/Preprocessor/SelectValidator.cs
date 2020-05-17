@@ -72,20 +72,20 @@ namespace AITSI.QueryProcessor.Preprocessor
                     {
                         // General grammar
 
-                        if (!queryWords[i].Contains("(")
-                            || queryWords[i].Split('(').Length != 2
-                            || queryWords[i + 1].Length < 2
-                            || !queryWords[i + 1].Contains(")")
-                            || (!(queryWords[i + 1][queryWords[i + 1].Length - 1] == ')')
-                                && !(queryWords[i + 1].Length < 3
-                                    && queryWords[i + 1][queryWords[i + 1].Length - 2] == ')'
-                                    && queryWords[i + 1][queryWords[i + 1].Length - 1] == ';'
-                                    )
-                                )
-                            )
-                        {
-                            throw new InvalidQueryException("#Invalid 'PATTERN' query - lexical mistake, maybe missing brackets or something?");
-                        }
+                        //if (!queryWords[i].Contains("(")
+                        //    || queryWords[i].Split('(').Length != 2
+                        //    || queryWords[i + 1].Length < 2
+                        //    //|| !queryWords[i + 1].Contains(")")
+                        //    || (!(queryWords[i + 1][queryWords[i + 1].Length - 1] == ')')
+                        //        && !(queryWords[i + 1].Length < 3
+                        //            && queryWords[i + 1][queryWords[i + 1].Length - 2] == ')'
+                        //            && queryWords[i + 1][queryWords[i + 1].Length - 1] == ';'
+                        //            )
+                        //        )
+                        //    )
+                        //{
+                        //    throw new InvalidQueryException("#Invalid 'PATTERN' query - lexical mistake, maybe missing brackets or something?");
+                        //}
 
                         // Verifying whether the first pattern argument has been declared (if not in quotes)
 
@@ -106,18 +106,18 @@ namespace AITSI.QueryProcessor.Preprocessor
 
                         // Verifying whether the second pattern argument has been declared (if not in quotes)
 
-                        if (!(queryWords[i][0] == '\''
-                                && queryWords[i][queryWords[i].Split(')')[0].Length - 1] == '\'')
-                            && !(queryWords[i][0] == '"'
-                                && queryWords[i][queryWords[i].Split(')')[0].Length - 1] == '"')
-                            && !(int.TryParse(queryWords[i].Split(')')[0], out int m))
-                            && queryWords[i].Split(')')[0] != "_")
-                        {
-                            if (Declarations.GetDeclarationByName(queryWords[i].Split('(')[1].Split(',')[0]) == null)
-                            {
-                                throw new InvalidQueryException("#Invalid 'PATTERN' query - have you declared the second argument earlier?");
-                            }
-                        }
+                        //if (!(queryWords[i][0] == '\''
+                        //        && queryWords[i][queryWords[i].Split(')')[0].Length - 1] == '\'')
+                        //    && !(queryWords[i][0] == '"'
+                        //        && queryWords[i][queryWords[i].Split(')')[0].Length - 1] == '"')
+                        //    && !(int.TryParse(queryWords[i].Split(')')[0], out int m))
+                        //    && queryWords[i].Split(')')[0] != "_")
+                        //{
+                        //    if (Declarations.GetDeclarationByName(queryWords[i].Split('(')[1].Split(',')[0]) == null)
+                        //    {
+                        //        throw new InvalidQueryException("#Invalid 'PATTERN' query - have you declared the second argument earlier?");
+                        //    }
+                        //}
 
                         i += 1;
                     }

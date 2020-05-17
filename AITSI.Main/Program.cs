@@ -10,7 +10,6 @@ namespace AITSI.Main
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine(args[0]);
             if (args.Length > 0)
             {
                 SourceRepository.StoreSourceCode(args[0]);

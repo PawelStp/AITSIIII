@@ -288,6 +288,7 @@ namespace AITSI.Pkb
         {
             List<string> returnList = new List<string>();
             AstNode currentNode = node;
+            AstNode test = null;
             while (currentNode != null)
             {
                 AstNode tmpNode = currentNode;
@@ -299,14 +300,11 @@ namespace AITSI.Pkb
                             UsedVariables.Add(tmpNode.Value);
                         returnList.Add(tmpNode.Value);
                     }
-                    else if (tmpNode.NodeType == NodeType.Operator)
-                    {
-                        tmpNode = tmpNode.Children
-                    }
-                    else
-                    {
-                        tmpNode = tmpNode.RightSiblingNode;
-                    }
+                    tmpNode = tmpNode.RightSiblingNode != null 
+                        ? tmpNode.RightSiblingNode
+                        : tmpNode.Children.Count > 0
+                            ? tmpNode.Children[0]
+                            : null;
                 }
                 currentNode = (currentNode.Children.Count > 0) ? currentNode.Children[0] : null;
             }
